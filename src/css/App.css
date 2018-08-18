@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.new-todo {
+  padding: 16px 16px 16px 60px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  background-color: white;
+  box-shadow: 0 -1px 10px 1px rgba(0, 0, 0, 0.2); 
+  font-size: 26px;
+  align-self: center;
+  width: 40%;
+}
+.new-todo::placeholder  
+{
+  opacity: 0.4;
+  font-style: italic;
+  font-weight: bold;
+  font-family:Helvetica Neue;   
+
+}
