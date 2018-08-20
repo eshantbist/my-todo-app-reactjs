@@ -49,11 +49,18 @@ export default class TodoItem extends Component
 			return (
 				<li className={classNames}>
 					<div className="view">
+						<input
+							className="toggle"
+							type="checkbox"
+							checked={this.props.todo.completed}
+							onChange={this.props.onToggle}
+						/>
 						<label onDoubleClick={this.handleEdit}>
 							{this.props.todo.title}
 						</label>
 					</div>
 					<input
+						ref="editField"
 						className="edit"
 						value={this.state.editText}
 						onBlur={this.handleSubmit}

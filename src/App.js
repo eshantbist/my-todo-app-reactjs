@@ -42,6 +42,11 @@ export default class Todoapp extends Component
     }
     }
 
+
+  toggle=(todoToToggle)=> {
+      this.props.models.toggle(todoToToggle);
+    }
+
   edit= (todo)=> {
       this.setState({editing: todo.id});
     }
@@ -54,10 +59,14 @@ export default class Todoapp extends Component
   cancel= ()=>{
       this.setState({editing: null});
     }
+  destroy=(todo)=> {
+      this.props.models.destroy(todo);
+    }
 
   render() {
     
-      let main; 
+      let main;
+      let footer; 
       let todos = this.props.models.todos();
 
       var shownTodos = todos.filter(function (todo) {
@@ -79,9 +88,17 @@ export default class Todoapp extends Component
             editing={this.state.editing === todo.id}
             onCancel={this.cancel}
             onSave={this.save.bind(this, todo)}
+            onDestroy={this.destroy.bind(this, todo)}
+            onToggle={this.toggle.bind(this, todo)}
           />
         );
       }, this);
+
+      let activeTodoCount = todos.reduce(function (accum, todo) {
+        return todo.completed ? accum : accum + 1;
+      }, 0);
+
+      let completedCount = todos.length - activeTodoCount;
 
 
       if (todos.length) {

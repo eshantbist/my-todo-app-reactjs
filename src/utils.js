@@ -25,7 +25,11 @@ const Utils = {
 				}
 			}
 			return newObj;
-		}
+		},
+		pluralize: function (count, word) {
+			return count === 1 ? word : word + 's';
+		},
+
 	}
 
 	export default Utils

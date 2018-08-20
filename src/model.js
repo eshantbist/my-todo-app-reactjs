@@ -15,6 +15,7 @@ const model={
 			completed: false
 		});
 
+		
 		console.log(todos);
 	},
 
@@ -23,7 +24,21 @@ const model={
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
 	},
+	destroy(todo){
+		todos = todos.filter(function (candidate) {
+			return candidate !== todo;
+		});
 
+	},
+	toggle(todoToToggle){
+		todos = todos.map(function (todo) {
+			return todo !== todoToToggle ?
+				todo :
+				Utils.extend({}, todo, {completed: !todo.completed});
+		});
+		console.log(todos);
+
+	}
 	
 
 
