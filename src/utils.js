@@ -1,7 +1,5 @@
-	
-export default var Utils={
-
-	uuid(){
+const Utils = {
+		uuid: function () {
 			var i, random;
 			var uuid = '';
 
@@ -16,22 +14,7 @@ export default var Utils={
 
 			return uuid;
 		},
-
-		pluralize(count, word) {
-			return count === 1 ? word : word + 's';
-		},
-
-		store(namespace, data) {
-			
-			if (data) {				
-				return localStorage.setItem(namespace, JSON.stringify(data));
-			}
-
-			var store = localStorage.getItem(namespace);
-			return (store && JSON.parse(store)) || [];
-		},
-
-		extend() {
+		extend: function () {
 			var newObj = {};
 			for (var i = 0; i < arguments.length; i++) {
 				var obj = arguments[i];
@@ -43,4 +26,6 @@ export default var Utils={
 			}
 			return newObj;
 		}
-}
+	}
+
+	export default Utils

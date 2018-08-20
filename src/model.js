@@ -1,71 +1,33 @@
 import Utils from './utils.js';
-import Apps from './App.js';
 
-export default var Model={
+let todos=[];
+const model={
 
-	todomodel(key) {
-		this.key = key;
-		this.todos = Utils.store(key);
-		this.onChanges = [];
-	};
+    todos(){
+	return todos;
+    },
 
-	todomodel.prototype.subscribe(onChange) {
-		this.onChanges.push(onChange);
-		
-	};
-
-	todomodel.prototype.inform() {
-		Utils.store(this.key, this.todos);
-		this.onChanges.forEach(function (cb) { cb(); });
-	};
-
-	todomodel.prototype.addTodo(title) {
-		this.todos = this.todos.concat({
+	addTodo(title){
+		console.log("I am addingTodo");
+		todos = todos.concat({
 			id: Utils.uuid(),
 			title: title,
 			completed: false
 		});
 
-		this.inform();
-	};
+		console.log(todos);
+	},
 
-	todomodel.prototype.toggleAll(checked) {
-		this.todos = this.todos.map(function (todo) {
-			return Utils.extend({}, todo, {completed: checked});
-		});
-
-		this.inform();
-	};
-
-	todomodel.prototype.toggle(todoToToggle) {
-		this.todos = this.todos.map(function (todo) {
-			return todo !== todoToToggle ?
-				todo :
-				Utils.extend({}, todo, {completed: !todo.completed});
-		});
-
-		this.inform();
-	};
-
-	todomodel.prototype.destroy(todo) {
-		this.todos = this.todos.filter(function (candidate) {
-			return candidate !== todo;
-		});
-
-		this.inform();
-	};
-
-	todomodel.prototype.save(todoToSave, text) {
-		this.todos = this.todos.map(function (todo) {
+	save(todoToSave, text) {
+		todos = todos.map(function (todo) {
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
+	},
 
-		this.inform();
-	};
+	
 
-	todomodel.prototype.clearCompleted() {
-		this.todos = this.todos.filter(function (todo) {
-			return !todo.completed;
-		});
+
 }
+
+export default model
 
