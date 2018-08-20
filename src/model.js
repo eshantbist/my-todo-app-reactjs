@@ -28,7 +28,6 @@ const model={
 		todos = todos.filter(function (candidate) {
 			return candidate !== todo;
 		});
-
 	},
 	toggle(todoToToggle){
 		todos = todos.map(function (todo) {

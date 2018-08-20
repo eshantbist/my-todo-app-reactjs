@@ -26,7 +26,7 @@ export default class Todoapp extends Component
       return;
     }
 
-    const val=this.state.newTodo;
+    const val=this.state.newTodo.toString();
 
     console.log(val);
 

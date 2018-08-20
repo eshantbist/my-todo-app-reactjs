@@ -28,12 +28,13 @@ export default class TodoItem extends Component
 			}
 		}
 		handleSubmit=(e)=> {
-			var val = this.state.editText;
+			let val = this.state.editText;
 			if (val) {
 				this.props.onSave(val);
 				this.setState({editText: val});
 			} else {
 				this.props.onDestroy();
+
 			}
 		}
 

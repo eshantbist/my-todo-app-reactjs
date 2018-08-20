@@ -100,3 +100,14 @@ body {
 .todo-list li.editing:last-child {
 	margin-bottom: -1px;
 }
+.todo-list li .destroy {
+	width: 20px;
+    height: 20px;
+    margin: auto 0;
+    padding: 0px;
+    color: #cc9a9a;
+    margin-bottom: 11px;
+    -webkit-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out;
+    float: right;
+}
