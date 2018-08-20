@@ -23,12 +23,16 @@ const model={
 		todos = todos.map(function (todo) {
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
+		console.log(todos)
 	},
+
 	destroy(todo){
 		todos = todos.filter(function (candidate) {
 			return candidate !== todo;
 		});
+		console.log(todos)
 	},
+	
 	toggle(todoToToggle){
 		todos = todos.map(function (todo) {
 			return todo !== todoToToggle ?
