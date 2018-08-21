@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from  './css/todoitem.css';
+import style from  './css/style.css';
 
 export default class TodoItem extends Component 
 {		
@@ -33,7 +33,7 @@ export default class TodoItem extends Component
 				this.props.onSave(val);
 				this.setState({editText: val});
 			} else {
-				this.props.onDestroy();
+				this.props.onDestroy(val);
 
 			}
 		}

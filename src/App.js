@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import style from  './css/App.css';
+import style from  './css/style.css';
 import TodoItem from './todoitem.js';
-
-const ALL_TODOS = 'all';
-const ACTIVE_TODOS = 'active';
-const COMPLETED_TODOS = 'completed';
 
 export default class Todoapp extends Component 
 {
   constructor(props) {
     super(props);
     this.state = { 
-      nowShowing:ALL_TODOS,
       editing:null,
       newTodo: ''};
   }
@@ -36,7 +31,6 @@ export default class Todoapp extends Component
       {
         return;
       }
-      e.preventDefault();
       this.props.models.addTodo(val);
       this.setState({newTodo: ''});
     }
@@ -65,22 +59,10 @@ export default class Todoapp extends Component
 
   render() {
     
-      let main;
-      let footer; 
+      let main; 
       let todos = this.props.models.todos();
 
-      var shownTodos = todos.filter(function (todo) {
-        switch (this.state.nowShowing) {
-        case ACTIVE_TODOS:
-          return !todo.completed;
-        case COMPLETED_TODOS:
-          return todo.completed;
-        default:
-          return true;
-        }
-      }, this);
-
-      let todoItems = shownTodos.map(function (todo) {
+      let todoItems = todos.map(function (todo) {
         return (
           <TodoItem
             todo={todo}
@@ -93,12 +75,6 @@ export default class Todoapp extends Component
           />
         );
       }, this);
-
-      let activeTodoCount = todos.reduce(function (accum, todo) {
-        return todo.completed ? accum : accum + 1;
-      }, 0);
-
-      let completedCount = todos.length - activeTodoCount;
 
 
       if (todos.length) {
