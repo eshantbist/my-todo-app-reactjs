@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import model from './model.js';
+import Model from './model';
 
-
-ReactDOM.render(<App models={model}/>, document.getElementById('root'));
+const m=new Model();
+ReactDOM.render(<App models={m}/>, document.getElementById('root'));
 

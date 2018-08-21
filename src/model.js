@@ -1,51 +1,54 @@
 import Utils from './utils.js';
 
-let todos=[];
-const model={
+export default class Model {
+
+
+    constructor() {
+    	this.todos_list=[];
+	}
+
 
     todos(){
-	return todos;
-    },
+		return this.todos_list;
+    }
 
 	addTodo(title){
 		console.log("I am addingTodo");
-		todos = todos.concat({
+		this.todos_list = this.todos_list.concat({
 			id: Utils.uuid(),
 			title: title,
 			completed: false
 		});
 
 		
-		console.log(todos);
-	},
+		console.log(this.todos_list);
+	}
 
 	save(todoToSave, text) {
-		todos = todos.map(function (todo) {
+		this.todos_list = this.todos_list.map(function (todo) {
 			return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
 		});
-		console.log(todos)
-	},
+		console.log(this.todos_list)
+	}
 
 	destroy(todo){
-		todos = todos.filter(function (candidate) {
+		this.todos_list = this.todos_list.filter(function (candidate) {
 			return candidate !== todo;
 		});
-		console.log(todos)
-	},
+		console.log(this.todos_list)
+	}
 	
 	toggle(todoToToggle){
-		todos = todos.map(function (todo) {
+		this.todos_list = this.todos_list.map(function (todo) {
 			return todo !== todoToToggle ?
 				todo :
 				Utils.extend({}, todo, {completed: !todo.completed});
 		});
-		console.log(todos);
+		console.log(this.todos_list);
 
 	}
 	
 
 
 }
-
-export default model
 

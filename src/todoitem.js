@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import style from  './css/style.css';
 
 export default class TodoItem extends Component 
 {		
@@ -15,6 +14,7 @@ export default class TodoItem extends Component
 			this.props.onEdit();
 			this.setState({editText: this.props.todo.title});
 		}
+
 		handleKeyDown= (e)=> {
 			if (e.which === 27) {
 				this.setState({editText: this.props.todo.title});
@@ -23,11 +23,13 @@ export default class TodoItem extends Component
 				this.handleSubmit(e);
 			}
 		}
+
 		handleChange=(e)=> {
 			if (this.props.editing) {
 				this.setState({editText: e.target.value});
 			}
 		}
+
 		handleSubmit=(e)=> {
 			let val = this.state.editText;
 			if (val) {
@@ -39,22 +41,30 @@ export default class TodoItem extends Component
 			}
 		}
 
+		ComponentDidMount=()=>{
+			
+		}
+
+		handleChecked=()=>{
+			console.log("Inside handlecheck");
+		}
+
 
 		render() {
-
+			
 			let classNames="";
 			if(this.props.todo.completed===true)
 			{classNames="completed";}
 			else if(this.props.editing===true)
 			{classNames="editing";}
-		
+
 			return (
-				<li className={classNames} onChange="">
+				<li className={classNames}>
 					<div className="view">
 						<input
 							className="toggle"
 							type="checkbox"
-							checked={this.props.todo.completed}
+							checked={this.handleChecked}
 							onChange={this.props.onToggle}
 						/>
 						<label onDoubleClick={this.handleEdit}>

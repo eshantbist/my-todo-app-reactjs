@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import style from  './css/style.css';
 import TodoItem from './todoitem.js';
 import TodoFooter from './todofooter.js';
-import {Router} from 'react-router';
 
 const ALL="all";
 

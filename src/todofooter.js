@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import style from  './css/style.css';
-import Utils from './utils.js';
-
 export default class TodoFooter extends Component 
 {	
 
