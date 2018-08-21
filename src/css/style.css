@@ -81,9 +81,38 @@ body {
 	top: 40px;
 }
 
+.todo-list li.completed {
+	color: red;
+}
+
 
 .todo-list li label {
 	padding: 15px 15px 15px 60px;
 	display: block;
 }
-
+.filters li {
+	display: inline;
+}
+.filters li a {
+	color: black;
+	padding: 5px 50px;
+	border: 1px solid transparent;
+	border-radius: 20px;
+	text-decoration: none;
+}
+.filters li a:hover {
+	border-color: black;
+}
+.footer {
+	color: #777;
+	padding: 3px ;
+	height: 10px;
+	text-align: center;
+	border-bottom:  1px solid #e6e6e6;
+	border-right:  1px solid #e6e6e6;
+	border-left:  1px solid #e6e6e6;
+	padding-bottom: 30px;
+}
+.filters{
+	margin-right: 30px;
+}

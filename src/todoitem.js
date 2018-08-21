@@ -7,9 +7,10 @@ export default class TodoItem extends Component
 		constructor(){
 			super();
 			this.state={
-				editText: ''
+				editText: '',
 			}
 		}
+
 		handleEdit= ()=> {
 			this.props.onEdit();
 			this.setState({editText: this.props.todo.title});
@@ -46,9 +47,9 @@ export default class TodoItem extends Component
 			{classNames="completed";}
 			else if(this.props.editing===true)
 			{classNames="editing";}
-
+		
 			return (
-				<li className={classNames}>
+				<li className={classNames} onChange="">
 					<div className="view">
 						<input
 							className="toggle"

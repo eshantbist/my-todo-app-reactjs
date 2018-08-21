@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import style from  './css/style.css';
 import TodoItem from './todoitem.js';
+import TodoFooter from './todofooter.js';
+import {Router} from 'react-router';
+
+const ALL="all";
 
 export default class Todoapp extends Component 
 {
@@ -8,9 +12,11 @@ export default class Todoapp extends Component
     super(props);
     this.state = { 
       editing:null,
-      newTodo: ''};
+      newTodo: '',
+      status:ALL};
   }
   
+
   handleChange=(e)=>{
     this.setState({ newTodo: [e.target.value]})
   }   
@@ -60,11 +66,13 @@ export default class Todoapp extends Component
   render() {
     
       let main; 
+      let footer;
       let todos = this.props.models.todos();
 
       let todoItems = todos.map(function (todo) {
         return (
           <TodoItem
+            key={todo.id}
             todo={todo}
             onEdit={this.edit.bind(this, todo)}
             editing={this.state.editing === todo.id}
@@ -87,6 +95,12 @@ export default class Todoapp extends Component
         );
       }
 
+      if (todos.length) {
+        footer =
+          <TodoFooter
+          />;
+      }
+
 
 
     return(
@@ -102,6 +116,8 @@ export default class Todoapp extends Component
             onChange={this.handleChange}>
           </input>
           {main}
+          {footer}
+
       </div>
     );
   }
