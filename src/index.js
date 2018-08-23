@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Model from './model';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-const m=new Model();
-ReactDOM.render(<App models={m}/>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
+ /*ReactDOM.render((
+  <BrowserRouter >
+    <div>
+      <Route path="/" component={App} />
+      <Route path="/completed" component={App} />
+      
+    </div>
+  </BrowserRouter>
+), document.getElementById('root'))*/
+	

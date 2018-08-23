@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class TodoItem extends Component 
 {		
 
-		constructor(){
-			super();
+
+		constructor(props){
+			super(props);
 			this.state={
 				editText: '',
 			}
@@ -41,17 +43,8 @@ export default class TodoItem extends Component
 			}
 		}
 
-		ComponentDidMount=()=>{
-			
-		}
-
-		handleChecked=()=>{
-			console.log("Inside handlecheck");
-		}
-
-
 		render() {
-			
+			console.log(this.props.hello);
 			let classNames="";
 			if(this.props.todo.completed===true)
 			{classNames="completed";}
@@ -59,12 +52,13 @@ export default class TodoItem extends Component
 			{classNames="editing";}
 
 			return (
+				
 				<li className={classNames}>
 					<div className="view">
 						<input
 							className="toggle"
 							type="checkbox"
-							checked={this.handleChecked}
+							checked={this.props.todo.completed}
 							onChange={this.props.onToggle}
 						/>
 						<label onDoubleClick={this.handleEdit}>
@@ -80,6 +74,7 @@ export default class TodoItem extends Component
 						onKeyDown={this.handleKeyDown}
 					/>
 				</li>
+				
 			)
 		}
 

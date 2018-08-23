@@ -83,6 +83,7 @@ body {
 
 .todo-list li.completed {
 	color: red;
+	text-decoration: line-through;
 }
 
 

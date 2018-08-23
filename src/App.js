@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import style from  './css/style.css';
 import TodoItem from './todoitem.js';
+import Model from './model';
 import TodoFooter from './todofooter.js';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const ALL="all";
 
-export default class Todoapp extends Component 
+export default class TodoApp extends Component 
 {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ export default class Todoapp extends Component
       editing:null,
       newTodo: '',
       status:ALL};
+    this.models=new Model();
   }
   
 
@@ -36,14 +39,15 @@ export default class Todoapp extends Component
       {
         return;
       }
-      this.props.models.addTodo(val);
+      this.models.addTodo(val);
       this.setState({newTodo: ''});
     }
     }
 
 
   toggle=(todoToToggle)=> {
-      this.props.models.toggle(todoToToggle);
+      this.models.toggle(todoToToggle);
+      this.setState({editing:null});
     }
 
   edit= (todo)=> {
@@ -51,7 +55,7 @@ export default class Todoapp extends Component
     }
 
   save= (todoToSave, text)=> {
-      this.props.models.save(todoToSave, text);
+      this.models.save(todoToSave, text);
       this.setState({editing: null});
     }
 
@@ -59,14 +63,15 @@ export default class Todoapp extends Component
       this.setState({editing: null});
     }
   destroy=(todo)=> {
-      this.props.models.destroy(todo);
+      this.models.destroy(todo);
+      this.setState({editing:null});
     }
 
   render() {
     
       let main; 
       let footer;
-      let todos = this.props.models.todos();
+      let todos = this.models.todos();
 
       let todoItems = todos.map(function (todo) {
         return (
@@ -103,21 +108,22 @@ export default class Todoapp extends Component
 
 
     return(
-      <div className="App">
-        <header className="App-header">
-          <h1>MY-TODOS</h1> 
-        </header>
-          <input 
-            className="new-todo" 
-            value={this.state.newTodo} 
-            placeholder="Your Tasks?" 
-            onKeyDown={this.handleKeydown} 
-            onChange={this.handleChange}>
-          </input>
-          {main}
-          {footer}
-
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <h1>MY-TODOS</h1> 
+          </header>
+            <input 
+              className="new-todo" 
+              value={this.state.newTodo} 
+              placeholder="Your Tasks?" 
+              onKeyDown={this.handleKeydown} 
+              onChange={this.handleChange}>
+            </input>
+            {main}
+            {footer}
+        </div>
+      </BrowserRouter>
     );
   }
 }
